@@ -57,13 +57,14 @@ $(function() {
       expect($('body')).toHaveClass('menu-hidden');
     });
 
-    /* TODO: Write a test that ensures the menu changes
-    * visibility when the menu icon is clicked. This test
-    * should have two expectations: does the menu display when
-    * clicked and does it hide when clicked again.
+    /* A test to validate menu appears when we click the menu icon
+    * and dissappears when clicked again
     */
     it('menu visibility toggles when menu-icon is clicked', function() {
-      expect($('.menu-icon-link').on('click')).
+      menuIcon.trigger();
+      expect($('body')).not.toHaveClass('menu-hidden');
+      menuIcon.trigger();
+      expect($('body')).toHaveClass('menu-hidden');
     });
 
   });
