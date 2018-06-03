@@ -84,10 +84,20 @@ $(function() {
       done();
     });
   });
-    /* TODO: Write a new test suite named "New Feed Selection" */
+    /* Tests for new feed selection */
+    describe('New Feed Selection', function() {
 
-    /* TODO: Write a test that ensures when a new feed is loaded
-    * by the loadFeed function that the content actually changes.
-    * Remember, loadFeed() is asynchronous.
-    */
+      beforeEach(function(done) {
+        let compare = $('.feed').children().val();
+        feedList.children()[1].trigger();
+        loadFeed(function() {
+          done();
+        });
+      });
+
+      it('should load a new feed when selected', function() {
+        expect($('.feed').children().val()).not.toBe(compare);
+        done();
+      });
+    });
 }());
